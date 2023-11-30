@@ -1,18 +1,18 @@
 -- Create the beer table.
 
--- Table: public.beer
+-- Table: public.beers
 
--- DROP TABLE IF EXISTS public.beer;
+-- DROP TABLE IF EXISTS public.beers;
 
-CREATE TABLE IF NOT EXISTS public.beer
+CREATE TABLE IF NOT EXISTS public.beers
 (
-    abv integer NOT NULL,
     id integer NOT NULL,
     name character varying COLLATE pg_catalog."default" NOT NULL,
+    abv integer NOT NULL,
     ibu integer NOT NULL,
     category_id integer NOT NULL,
     brewery_id integer NOT NULL,
-    CONSTRAINT beer_pkey PRIMARY KEY (id),
+    CONSTRAINT beers_pkey PRIMARY KEY (id),
     CONSTRAINT brewery_id FOREIGN KEY (brewery_id)
         REFERENCES public.breweries (id) MATCH SIMPLE
         ON UPDATE NO ACTION
@@ -25,5 +25,5 @@ CREATE TABLE IF NOT EXISTS public.beer
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.beer
+ALTER TABLE IF EXISTS public.beers
     OWNER to postgres;
