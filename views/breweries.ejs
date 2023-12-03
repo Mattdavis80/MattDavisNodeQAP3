@@ -1,0 +1,18 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="breweries content">
+            <form action="/breweries" method="POST">
+                <b>Breweries: </b></br> 
+                <% if (theBreweries.length > 0) { %>
+                    <% theBreweries.forEach(brewery => { %>
+                        <b><%= brewery.name %></b></br>
+                    <% }) %>
+                <% } else { %>
+                    <p>No breweries found.</p>
+                <% } %>
+        </div>
+    </body>
+    <%- include('./partials/foot.ejs') %>
+</html>

@@ -26,6 +26,10 @@ app.get("/about", (request, response) => {
 const beersRouter = require("./routes/beers");
 app.use("/beers", beersRouter);
 
+// Logic for the breweries page.
+const breweriesRouter = require("./routes/breweries");
+app.use("/breweries", breweriesRouter);
+
 // Logic for the 404 page.
 app.use((req, res) => {
   res.status(404).render("404");
