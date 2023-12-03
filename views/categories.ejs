@@ -1,0 +1,18 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="categories content">
+            <form action="/categories" method="POST">
+                <b>Categories: </b></br> 
+                <% if (categories.length > 0) { %>
+                    <% categories.forEach(category => { %>
+                        <b><%= category.name %></b></br>
+                    <% }) %>
+                <% } else { %>
+                    <p>No Categories found.</p>
+                <% } %>
+        </div>
+    </body>
+    <%- include('./partials/foot.ejs') %>
+</html>

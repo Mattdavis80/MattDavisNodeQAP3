@@ -30,6 +30,10 @@ app.use("/beers", beersRouter);
 const breweriesRouter = require("./routes/breweries");
 app.use("/breweries", breweriesRouter);
 
+// Logic for the categories page.
+const categoriesRouter = require("./routes/categories");
+app.use("/categories", categoriesRouter);
+
 // Logic for the 404 page.
 app.use((req, res) => {
   res.status(404).render("404");

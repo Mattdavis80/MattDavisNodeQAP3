@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   if (DEBUG) console.log("breweries.GET");
   try {
     let theBreweries = await getBreweries();
-    if (DEBUG) console.log("inside the beers.route.GET success");
+    if (DEBUG) console.log("inside the breweries.route.GET success");
     if (DEBUG) console.log(theBreweries);
     res.render("breweries", { theBreweries });
   } catch {
