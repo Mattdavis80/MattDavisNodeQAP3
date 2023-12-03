@@ -9,8 +9,8 @@ const pool = new Pool({
   user: "postgres",
   host: "localhost",
   database: "breweries",
-  password: "seasky22",
-  port: 5432,
+  password: "seasky",
+  port: 5433,
 });
 
 // Export the pool object so that it can be used in other modules.

@@ -8,12 +8,27 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
+global.DEBUG = true;
 app.set("view engine", "ejs");
-app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true })); // This is important!
+app.use(express.static("public")); // Allows us to use the public folder.
+app.use(express.urlencoded({ extended: true })); // Allows us to parse the body of a request.
 
 app.get("/", (req, res) => {
   res.render("index.ejs", { name: "John Doe" });
+});
+
+// Logic for the about page.
+app.get("/about", (request, response) => {
+  response.render("about.ejs");
+});
+
+// Logic for the beers page.
+const beersRouter = require("./routes/beers");
+app.use("/beers", beersRouter);
+
+// Logic for the 404 page.
+app.use((req, res) => {
+  res.status(404).render("404");
 });
 
 app.listen(PORT, () => {

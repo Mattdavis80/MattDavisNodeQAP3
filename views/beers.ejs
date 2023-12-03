@@ -1,0 +1,37 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="beers content">
+            <form action="/beers" method="POST">
+                <b>Beers: </b></br> 
+                <% if (theBeers.length > 0) { %>
+                    <% theBeers.forEach(beer => { %>
+                        <b><%= beer.name %></b></br>
+                    <% }) %>
+                <% } else { %>
+                    <p>No beers found.</p>
+                <% } %>
+            </br><label>Add a New Beer:</label></br>
+            <label>Beer Name:
+                <input type="text" id="beerName" name="beerName" value="<%= locals.beerName %>" required>
+            </label>
+            <label>ABV:
+                <input type="abv" id="number" name="abv" value="<%= locals.abv %>" required>
+            </label>
+            <label>IBU:
+                <input type="ibu" id="number" name="ibu" value="<%= locals.ibu %>" required>
+            </label>
+            <label>Category ID:
+                <input placeholder="1-10" type="number" id="category_id" name="category_id" value="<%= locals.category_id %>" required>
+            </label>
+            <label>Brewery ID:
+                <input placeholder="1-10" type="number" id="brewery_id" name="brewery_id" value="<%= locals.brewery_id %>" required>
+            </label>
+            </br>
+            <button>POST</button>
+        </form>
+        </div>
+    </body>
+    <%- include('./partials/foot.ejs') %>
+</html>

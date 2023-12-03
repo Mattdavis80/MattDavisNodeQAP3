@@ -1,0 +1,13 @@
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="beer content">
+      <h2>Beer:</h2>
+      <% if (singleBeer.length > 0) var beer = singleBeer[0];{ %>
+      <h3><%= beer.name %> <%= beer.ibu %></h3>
+      <% } %>
+    </div>
+  </body>
+  <%- include('./partials/foot.ejs') %>
+</html>
