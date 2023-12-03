@@ -13,7 +13,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true })); // This is important!
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs", { name: "John Doe" });
 });
 
 app.listen(PORT, () => {
