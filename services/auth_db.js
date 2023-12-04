@@ -1,8 +1,8 @@
 // File name: auth_db.js
 // Description: This file contains the database connection to the dvdrental database located in the postgresql server. This information will need to be changed to match the database you are using.
-// Last modified date: 3/25/2021
-// Change log: 3/25/2021 file created.
-// Todo: Replace hard-coded values with environment variables.
+// Last modified date: 29/11/2023
+// Change log:         03/25/2023  File created.
+//                     04/12/2023  Added additional comments.
 
 const Pool = require("pg").Pool;
 const pool = new Pool({

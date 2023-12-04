@@ -1,1 +1,4 @@
-The services function of the services folder is to contain all code necessary to connect with the database, store SQL queries, and provide query results for API actions.
+The services folder contains:
+- SQL statements to create the required database for the application
+- The Auth file to provide access to the PGAdmin database created by the user **This file must be updated with the users own information**
+- The data access layer for the beers/breweries/categories tables in the breweries database.
