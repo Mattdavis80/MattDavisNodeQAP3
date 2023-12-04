@@ -1,5 +1,8 @@
-// Categories Data Access Layer.
-// This file is used to interact with the database and gather information from the breweries table.
+// File name: categories.dal.js
+// Description: The file used to handle the categories page and associated routes/requests.
+// Last modified date: 04/12/2023
+// Change log: 01/12/2023 file created.
+//             04/12/2023 added additional comments.
 
 const dal = require("./auth_db");
 

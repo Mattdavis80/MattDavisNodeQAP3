@@ -1,11 +1,20 @@
+// File name: categories.js
+// Description: The file used to handle the categories page and associated routes/requests.
+// Last modified date: 04/12/2023
+// Change log: 01/12/2023 File created.
+//             04/12/2023 Added additional comments.
+
+// Import modules for the application.
 const express = require("express");
 const router = express.Router();
+
+// Import functions from the categories.dal.js file.
 const {
   getCategories,
   getCategoryById,
 } = require("../services/categories.dal");
 
-// is really http://localhost:3000/categories
+// Get Methods for the categories page.
 router.get("/", async (req, res) => {
   if (DEBUG) console.log("categories.GET");
   try {
@@ -18,7 +27,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// is really http://localhost:3000/categories/1
+// Get method for the category page, renders the category.ejs page and passes in the category variable to be used in the ejs file.
 router.get("/:id", async (req, res) => {
   try {
     let category = await getCategoryById(req.params.id); // from postgresql
@@ -29,4 +38,5 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Export the router.
 module.exports = router;
