@@ -46,8 +46,9 @@
             <% if (theBeers.length > 0) { %>
                 <% theBeers.forEach(beer => { %>
                     <b><%= beer.name%></b>
-                    <a href="/beers/<%=beer.id%>/delete?name=<%=beer.name%>&id=<%=beer.id%>">delete</br></a>
-
+                    <a href="/beers/<%=beer.id%>/edit?name=<%=beer.name%>">edit</a>
+                    <a href="/beers/<%=beer.id%>/delete?name=<%=beer.name%>&id=<%=beer.id%>">delete</a>
+                    <a href="/beers/<%=beer.id%>/replace?name=<%=beer.name%>">replace</a></br> 
                     <% }) %>
             <% } %>
         </br><label>Add a New Beer:</label></br>

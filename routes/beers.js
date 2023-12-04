@@ -5,6 +5,8 @@ const {
   getBeerByBeerId,
   addBeer,
   deleteBeer,
+  putBeer,
+  patchBeer,
 } = require("../services/beers.dal");
 
 // is really http://localhost:3000/beers/
@@ -29,7 +31,25 @@ router.get("/:id/delete", async (req, res) => {
   });
 });
 
-// is really http://localhost:3000/actors/123
+// Get the form to edit a beer
+router.get("/:id/edit", async (req, res) => {
+  if (DEBUG) console.log("beer.Edit:" + req.params.id);
+  res.render("putBeers.ejs", {
+    name: req.query.name,
+    id: req.params.id,
+  });
+});
+
+// Get the form to replace a beer
+router.get("/:id/replace", async (req, res) => {
+  if (DEBUG) console.log("beer.Replace:" + req.params.id);
+  res.render("patchBeer.ejs", {
+    name: req.query.name,
+    id: req.params.id,
+  });
+});
+
+// is really http://localhost:3000/beers/1
 router.get("/:id", async (req, res) => {
   try {
     let singleBeer = await getBeerByBeerId(req.params.id); // from postgresql
@@ -50,6 +70,28 @@ router.post("/", async (req, res) => {
       req.body.category_id,
       req.body.brewery_id
     );
+    res.redirect("/beers/");
+  } catch {
+    // log this error to an error log file.
+    res.render("503");
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  if (DEBUG) console.log("beers.PUT: " + req.params.id);
+  try {
+    await putBeer(req.params.id, req.body.name);
+    res.redirect("/beers/");
+  } catch {
+    // log this error to an error log file.
+    res.render("503");
+  }
+});
+
+router.patch("/:id", async (req, res) => {
+  if (DEBUG) console.log("actors.PATCH: " + req.params.id);
+  try {
+    await patchBeer(req.params.id, req.body.name);
     res.redirect("/beers/");
   } catch {
     // log this error to an error log file.

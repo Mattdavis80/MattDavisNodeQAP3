@@ -75,49 +75,39 @@ var deleteBeer = function (id) {
   });
 };
 
-// var putBeer = function (id, beerName, abv, ibu, category_id, brewery_id) {
-//   if (DEBUG) console.log("beers.pg.dal.putBeer()");
-//   return new Promise(function (resolve, reject) {
-//     const sql =
-//       "UPDATE public.beers SET id=$1, name=$2, abv=$3, ibu=$4, category_id=$5, brewery_id=$6 WHERE id=$1;";
-//     dal.query(
-//       sql,
-//       [id, beerName, abv, ibu, category_id, brewery_id],
-//       (err, result) => {
-//         if (err) {
-//           reject(err);
-//         } else {
-//           resolve(result.rows);
-//         }
-//       }
-//     );
-//   });
-// };
+var putBeer = function (id, name) {
+  if (DEBUG) console.log("beers.dal.putBeer()");
+  return new Promise(function (resolve, reject) {
+    const sql = "UPDATE public.beers2 SET name=$2  WHERE id=$1;";
+    dal.query(sql, [id, name], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    });
+  });
+};
 
-// var patchBeer = function (id, beerName, abv, ibu, category_id, brewery_id) {
-//   if (DEBUG) console.log("beers.pg.dal.patchBeer()");
-//   return new Promise(function (resolve, reject) {
-//     const sql =
-//       "UPDATE public.beers SET id=$1, name=$2, abv=$3, ibu=$4, category_id=$5, brewery_id=$6 WHERE id=$1;";
-//     dal.query(
-//       sql,
-//       [id, beerName, abv, ibu, category_id, brewery_id],
-//       (err, result) => {
-//         if (err) {
-//           reject(err);
-//         } else {
-//           resolve(result.rows);
-//         }
-//       }
-//     );
-//   });
-// };
+var patchBeer = function (id, name) {
+  if (DEBUG) console.log("beer.dal.patchBeer()");
+  return new Promise(function (resolve, reject) {
+    const sql = "UPDATE public.beers2 SET name=$2 WHERE id=$1;";
+    dal.query(sql, [id, name], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    });
+  });
+};
 
 module.exports = {
   getBeers,
   getBeerByBeerId,
   addBeer,
   deleteBeer,
-  // putBeer,
-  // patchBeer,
+  putBeer,
+  patchBeer,
 };
