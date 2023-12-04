@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { getBeers, getBeerByBeerId, addBeer } = require("../services/beers.dal");
+const {
+  getBeers,
+  getBeerByBeerId,
+  addBeer,
+  deleteBeer,
+} = require("../services/beers.dal");
 
 // is really http://localhost:3000/beers/
 router.get("/", async (req, res) => {
@@ -13,6 +18,15 @@ router.get("/", async (req, res) => {
   } catch {
     res.render("503");
   }
+});
+
+// Get the form to delete a beer
+router.get("/:id/delete", async (req, res) => {
+  if (DEBUG) console.log("beer.Delete:" + req.params.id);
+  res.render("beerDelete.ejs", {
+    name: req.query.name,
+    id: req.params.id,
+  });
 });
 
 // is really http://localhost:3000/actors/123
@@ -38,6 +52,18 @@ router.post("/", async (req, res) => {
     );
     res.redirect("/beers/");
   } catch {
+    // log this error to an error log file.
+    res.render("503");
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  if (DEBUG) console.log("beers.delete: " + req.params.id);
+  try {
+    await deleteBeer(req.params.id);
+    res.redirect("/beers/");
+  } catch (err) {
+    if (DEBUG) console.error(err);
     // log this error to an error log file.
     res.render("503");
   }

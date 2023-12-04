@@ -61,48 +61,63 @@ var addBeer = function (beerName, abv, ibu, category_id, brewery_id) {
   });
 };
 
-var putBeer = function (id, beerName, abv, ibu, category_id, brewery_id) {
-  if (DEBUG) console.log("beers.pg.dal.putBeer()");
+var deleteBeer = function (id) {
+  if (DEBUG) console.log("beers.dal.deleteBeer()");
   return new Promise(function (resolve, reject) {
-    const sql =
-      "UPDATE public.beers SET id=$1, name=$2, abv=$3, ibu=$4, category_id=$5, brewery_id=$6 WHERE id=$1;";
-    dal.query(
-      sql,
-      [id, beerName, abv, ibu, category_id, brewery_id],
-      (err, result) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result.rows);
-        }
+    const sql = "DELETE FROM public.beers2 WHERE id = $1;";
+    dal.query(sql, [id], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result.rows);
       }
-    );
+    });
   });
 };
 
-var patchBeer = function (id, beerName, abv, ibu, category_id, brewery_id) {
-  if (DEBUG) console.log("beers.pg.dal.patchBeer()");
-  return new Promise(function (resolve, reject) {
-    const sql =
-      "UPDATE public.beers SET id=$1, name=$2, abv=$3, ibu=$4, category_id=$5, brewery_id=$6 WHERE id=$1;";
-    dal.query(
-      sql,
-      [id, beerName, abv, ibu, category_id, brewery_id],
-      (err, result) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result.rows);
-        }
-      }
-    );
-  });
-};
+// var putBeer = function (id, beerName, abv, ibu, category_id, brewery_id) {
+//   if (DEBUG) console.log("beers.pg.dal.putBeer()");
+//   return new Promise(function (resolve, reject) {
+//     const sql =
+//       "UPDATE public.beers SET id=$1, name=$2, abv=$3, ibu=$4, category_id=$5, brewery_id=$6 WHERE id=$1;";
+//     dal.query(
+//       sql,
+//       [id, beerName, abv, ibu, category_id, brewery_id],
+//       (err, result) => {
+//         if (err) {
+//           reject(err);
+//         } else {
+//           resolve(result.rows);
+//         }
+//       }
+//     );
+//   });
+// };
+
+// var patchBeer = function (id, beerName, abv, ibu, category_id, brewery_id) {
+//   if (DEBUG) console.log("beers.pg.dal.patchBeer()");
+//   return new Promise(function (resolve, reject) {
+//     const sql =
+//       "UPDATE public.beers SET id=$1, name=$2, abv=$3, ibu=$4, category_id=$5, brewery_id=$6 WHERE id=$1;";
+//     dal.query(
+//       sql,
+//       [id, beerName, abv, ibu, category_id, brewery_id],
+//       (err, result) => {
+//         if (err) {
+//           reject(err);
+//         } else {
+//           resolve(result.rows);
+//         }
+//       }
+//     );
+//   });
+// };
 
 module.exports = {
   getBeers,
   getBeerByBeerId,
   addBeer,
-  putBeer,
-  patchBeer,
+  deleteBeer,
+  // putBeer,
+  // patchBeer,
 };

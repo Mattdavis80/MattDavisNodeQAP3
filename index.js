@@ -5,6 +5,7 @@
 
 // Import the express module.
 const express = require("express");
+const methodOverride = require("method-override");
 const app = express();
 const PORT = 3000;
 
@@ -12,6 +13,7 @@ global.DEBUG = true;
 app.set("view engine", "ejs");
 app.use(express.static("public")); // Allows us to use the public folder.
 app.use(express.urlencoded({ extended: true })); // Allows us to parse the body of a request.
+app.use(methodOverride("_method")); // So is this!
 
 app.get("/", (req, res) => {
   res.render("index.ejs", { name: "John Doe" });
