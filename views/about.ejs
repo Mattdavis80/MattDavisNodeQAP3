@@ -2,8 +2,26 @@
   <%- include('./partials/head.ejs') %>
   <body>
     <%- include('./partials/nav.ejs') %>
-    <h1>about page</h1>
-    <h2>Welcome to the machine. What is it all about.</h2>
+    <h1>About page</h1>
+    <h2>
+      To start this application, first run the "npm i" command to install all
+      associated modules.
+    </h2>
+    <p>
+      Before starting the application, it is important for the user to create
+      their own database using the provided SQL statements located in the
+      services/SQL folder. The authorization information must then be changed in
+      the auth.db file located in the services folder.
+    </p>
+    <p>
+      This project utilizes the NPM package "Nodemon" which allows users to make
+      edits to the Node Server logic without having to restart the
+      server/application.
+    </p>
+    <p>
+      To start this application, simply input "npm start" into the terminal,
+      this command was added by the author in the package.json file.
+    </p>
   </body>
   <%- include('./partials/foot.ejs') %>
 </html>

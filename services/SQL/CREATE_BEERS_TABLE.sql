@@ -6,7 +6,7 @@
 
 CREATE TABLE IF NOT EXISTS public.beers
 (
-    id integer NOT NULL,
+    id serial NOT NULL,
     name character varying COLLATE pg_catalog."default" NOT NULL,
     abv integer NOT NULL,
     ibu integer NOT NULL,
