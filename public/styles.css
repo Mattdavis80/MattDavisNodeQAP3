@@ -1,3 +1,5 @@
+/* This style sheet was obtained from picocss, a free simple css theme to use on projects */
+
 @charset "UTF-8"; /*!
  * Pico CSS v1.5.10 (https://picocss.com)
  * Copyright 2019-2023 - Licensed under MIT
@@ -27,6 +29,7 @@
   --form-label-font-weight: var(--font-weight);
   --transition: 0.2s ease-in-out;
   --modal-overlay-backdrop-filter: blur(0.25rem);
+  margin: 3rem;
 }
 @media (min-width: 576px) {
   :root {
