@@ -102,7 +102,7 @@ router.put("/:id", async (req, res) => {
 
 // Patch method for the beers page. Used to update a beer in the database.
 router.patch("/:id", async (req, res) => {
-  if (DEBUG) console.log("actors.PATCH: " + req.params.id);
+  if (DEBUG) console.log("beers.PATCH: " + req.params.id);
   try {
     await patchBeer(req.params.id, req.body.name);
     res.redirect("/beers/");

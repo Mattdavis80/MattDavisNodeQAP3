@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
 // Get method for the category page, renders the category.ejs page and passes in the category variable to be used in the ejs file.
 router.get("/:id", async (req, res) => {
   try {
-    let category = await getCategoryById(req.params.id); // from postgresql
+    let category = await getCategoryById(req.params.id);
     if (category.length === 0) res.render("no record");
     else res.render("category", { category });
   } catch {
