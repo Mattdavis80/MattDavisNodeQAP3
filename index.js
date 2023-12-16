@@ -9,6 +9,7 @@
 // Import modules for the application.
 const express = require("express"); // Express module.
 const methodOverride = require("method-override"); // Method-override module.
+require("dotenv").config(); // Dotenv module.
 const app = express(); // Instantiating the express module as app.
 const PORT = 3000; // Port declaration.
 
@@ -50,5 +51,5 @@ app.use((req, res) => {
 
 // App.listen method to listen on the port declared above.
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+  console.log(`Listening on port ${PORT} : http://localhost:${PORT}`);
 });
